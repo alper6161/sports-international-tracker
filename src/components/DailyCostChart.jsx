@@ -16,12 +16,12 @@ export const DailyCostChart = () => {
         },
         {
             name: '3 Sept',
-            dailyCost: 23500 / 4,
+            dailyCost: 23500 / 3,
             target
         },
         {
             name: '4 Sept',
-            dailyCost: 23500 / 8,
+            dailyCost: 23500 / 4,
             target
         }
     ];
