@@ -6,6 +6,7 @@ export const DailyCost = () => {
         if(localStorage.getItem('total') && localStorage.getItem('dayCount')){
             setTotalCost(localStorage.getItem('total'));
             setDayCount(localStorage.getItem('dayCount'));
+            console.log(localStorage.getItem('excelData'));
         }
     }, [])
     return (

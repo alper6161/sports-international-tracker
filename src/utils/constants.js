@@ -1,0 +1,1 @@
+export const EXCEL_START_DATE = new Date('1900-01-01');
