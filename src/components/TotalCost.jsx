@@ -1,10 +1,8 @@
-import {useEffect, useState} from 'react'
-export const TotalCost = () => {
-    const [totalCost, setTotalCost] = useState(23500);
+import {useSelector} from "react-redux";
 
-    useEffect(() => {
-        localStorage.setItem('total', totalCost);
-    }, [totalCost])
+export const TotalCost = () => {
+    const {totalCost} = useSelector(state => state.rootReducer);
+
     return (
         <div className="widget centered">
             <h3 style={{fontWeight: 'bold'}}> Total Cost: </h3>

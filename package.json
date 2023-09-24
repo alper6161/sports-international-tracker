@@ -13,9 +13,11 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.8",
+    "@reduxjs/toolkit": "^1.9.5",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
     "recharts": "^2.8.0",
     "vite-plugin-copy": "^0.1.6",
     "xlsx": "^0.18.5"

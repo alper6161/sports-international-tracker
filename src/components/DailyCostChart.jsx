@@ -1,30 +1,22 @@
-import {LineChart, CartesianGrid, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 export const DailyCostChart = () => {
+    const {schedule, totalCost} = useSelector(state => state.rootReducer);
+    const [chartData, setChartData] = useState([]);
     const target = 500;
 
-    const data = [
-        {
-            name: '1 Sept',
-            dailyCost: 23500,
-            target
-        },
-        {
-            name: '2 Sept',
-            dailyCost: 23500 / 2,
-            target
-        },
-        {
-            name: '3 Sept',
-            dailyCost: 23500 / 3,
-            target
-        },
-        {
-            name: '4 Sept',
-            dailyCost: 23500 / 4,
-            target
+    useEffect(() => {
+        if(schedule.length > 0){
+            setChartData(schedule.map((date, index) => ({
+                name: date,
+                dailyCost: Math.round(totalCost / (index + 1) * 100) / 100,
+                target
+            })));
         }
-    ];
+    }, [schedule])
+
 
     return (
         <div className="widget centered" style={{ minHeight: '25rem', padding: '2rem'}}>
@@ -33,7 +25,7 @@ export const DailyCostChart = () => {
                 <LineChart
                     width={500}
                     height={300}
-                    data={data}
+                    data={chartData}
                     margin={{
                         top: 5,
                         right: 30,
@@ -45,7 +37,7 @@ export const DailyCostChart = () => {
                     <YAxis />
                     <Tooltip contentStyle={{background: 'black'}}/>
                     <Legend />
-                    <Line type="monotone" dataKey="dailyCost" stroke="white" />
+                    <Line type="monotone"  dataKey="dailyCost" stroke="red" />
                     <Line type="monotone" dataKey="target" stroke="#ffcccb" />
                 </LineChart>
             </ResponsiveContainer>

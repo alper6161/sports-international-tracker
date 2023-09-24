@@ -1,11 +1,15 @@
 import {useEffect, useState} from 'react'
+import {useSelector} from "react-redux";
 
 export const DayCount = () => {
-    const [dayCount, setDayCount] = useState(4);
+    const {schedule} = useSelector(state => state.rootReducer);
+    const [dayCount, setDayCount] = useState(1);
 
     useEffect(() => {
-        localStorage.setItem('dayCount', dayCount);
-    }, [dayCount]);
+        if(schedule.length > 0){
+            setDayCount(schedule.length)
+        }
+    }, [schedule]);
 
     return (
         <div className="widget centered">
